@@ -1,0 +1,33 @@
+<h1>List Posts</h1>
+
+<div class="text-[3rem]" *ngIf="isLoading$ | async; else dataContent">
+  Loading...
+  <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</div>
+<ng-template #dataContent>
+  <table id="customers">
+    <tr>
+      <th>User Id</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Opts</th>
+    </tr>
+
+    <tr *ngFor="let post of posts">
+      <td>
+        {{ post.userId }}
+      </td>
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
+      <td>
+        <a
+          class="text-blue-500 hover:underline"
+          routerLink="/posts/{{ post.id }}"
+          >View detailed</a
+        >
+      </td>
+    </tr>
+  </table>
+</ng-template>

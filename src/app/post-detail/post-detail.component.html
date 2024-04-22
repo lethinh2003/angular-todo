@@ -1,0 +1,16 @@
+<div class="text-[3rem]" *ngIf="isLoading$ | async; else dataContent">
+  Loading...
+  <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</div>
+<ng-template #dataContent>
+  <div *ngIf="post">
+    <h2>{{ post?.title | uppercase }} Details</h2>
+    <div><span>id: </span>{{ post?.id }}</div>
+    <div><span>title: </span>{{ post?.title }}</div>
+    <div><span>body: </span>{{ post?.body }}</div>
+
+    <button pButton pRipple class="p-button-success" (click)="goBack()">
+      Back
+    </button>
+  </div>
+</ng-template>
